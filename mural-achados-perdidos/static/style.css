@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fa;
+    color: #1f2937;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 35px 0;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    opacity: 0.9;
+}
+
+main {
+    padding: 35px 0;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.topo h2 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filtros a {
+    text-decoration: none;
+    color: #374151;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.filtros a.ativo {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    font-size: 21px;
+}
+
+.informacao p {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.tag {
+    height: fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.perdido {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.encontrado {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.resolvido {
+    background: #dcfce7;
+    color: #166534;
+    padding: 10px;
+    border-radius: 7px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn-resolver {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background: #16a34a;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-resolver:hover {
+    background: #15803d;
+}
+
+.form-excluir {
+    margin-top: 8px;
+}
+
+.btn-excluir {
+    width: 100%;
+    padding: 9px;
+    border: none;
+    border-radius: 7px;
+    background: #fee2e2;
+    color: #b91c1c;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background: #fecaca;
+}
+
+.formulario {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.formulario h2 {
+    margin-bottom: 20px;
+}
+
+.formulario label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.formulario textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-voltar {
+    display: inline-block;
+    background: #e5e7eb;
+    color: #374151;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.nenhum {
+    background: white;
+    padding: 45px;
+    border-radius: 12px;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+.nenhum h3 {
+    margin-bottom: 10px;
+}
+
+.nenhum p {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .topo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .topo .btn {
+        text-align: center;
+    }
+
+    .filtros {
+        flex-wrap: wrap;
+    }
+
+    .filtros a {
+        flex: 1;
+        text-align: center;
+    }
+
+    .formulario {
+        padding: 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .botoes .btn,
+    .btn-voltar {
+        text-align: center;
+    }
+}

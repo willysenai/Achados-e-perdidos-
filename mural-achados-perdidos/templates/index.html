@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>🔎 Achados e Perdidos</h1>
+        <p>Encontre o que foi perdido ou ajude alguém a encontrar.</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="topo">
+        <div>
+            <h2>Mural de itens</h2>
+            <p>Confira os objetos cadastrados.</p>
+        </div>
+        <a href="{{ url_for('cadastrar') }}" class="btn">+ Cadastrar item</a>
+    </div>
+
+    <div class="filtros">
+        <a href="{{ url_for('inicio', filtro='todos') }}"
+           class="{% if filtro == 'todos' %}ativo{% endif %}">Todos</a>
+        <a href="{{ url_for('inicio', filtro='perdidos') }}"
+           class="{% if filtro == 'perdidos' %}ativo{% endif %}">Perdidos</a>
+        <a href="{{ url_for('inicio', filtro='encontrados') }}"
+           class="{% if filtro == 'encontrados' %}ativo{% endif %}">Encontrados</a>
+    </div>
+
+    <div class="lista">
+        {% if itens %}
+            {% for item in itens %}
+            <div class="card">
+                <div class="card-topo">
+                    <h3>{{ item["nome"] }}</h3>
+                    {% if item["tipo"] == "Perdido" %}
+                        <span class="tag perdido">Perdido</span>
+                    {% else %}
+                        <span class="tag encontrado">Encontrado</span>
+                    {% endif %}
+                </div>
+
+                <div class="informacao">
+                    <p><strong>Descrição:</strong> {{ item["descricao"] }}</p>
+                    <p><strong>📍 Local:</strong> {{ item["local"] }}</p>
+                    <p><strong>📞 Contato:</strong> {{ item["contato"] }}</p>
+                </div>
+
+                {% if item["status"] == "Resolvido" %}
+                    <div class="resolvido">✓ Item devolvido / situação resolvida</div>
+                {% else %}
+                    <form action="{{ url_for('resolver', id=item['id']) }}" method="POST">
+                        <button class="btn-resolver">✓ Marcar como resolvido</button>
+                    </form>
+                {% endif %}
+
+                <form action="{{ url_for('excluir', id=item['id']) }}" method="POST" class="form-excluir">
+                    <button class="btn-excluir">Excluir</button>
+                </form>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="nenhum">
+                <h3>📭 Nenhum item encontrado</h3>
+                <p>Ainda não existem itens cadastrados.</p>
+                <a href="{{ url_for('cadastrar') }}" class="btn">Cadastrar primeiro item</a>
+            </div>
+        {% endif %}
+    </div>
+</main>
+</body>
+</html>

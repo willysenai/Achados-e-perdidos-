@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>📦 Cadastrar item</h1>
+        <p>Cadastre um objeto perdido ou encontrado.</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="formulario">
+        <h2>Novo cadastro</h2>
+
+        <form method="POST">
+            <label for="nome">Nome do item</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Mochila preta" required>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" name="descricao" placeholder="Descreva o objeto..." required></textarea>
+
+            <label for="local">Local</label>
+            <input type="text" id="local" name="local" placeholder="Ex: Escola, sala 3" required>
+
+            <label for="contato">Contato</label>
+            <input type="text" id="contato" name="contato" placeholder="Telefone, e-mail..." required>
+
+            <label for="tipo">Situação</label>
+            <select id="tipo" name="tipo" required>
+                <option value="">Selecione</option>
+                <option value="Perdido">🔴 Perdi este item</option>
+                <option value="Encontrado">🟢 Encontrei este item</option>
+            </select>
+
+            <div class="botoes">
+                <button type="submit" class="btn">Cadastrar item</button>
+                <a href="{{ url_for('inicio') }}" class="btn-voltar">Voltar</a>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>
